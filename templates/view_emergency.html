@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GatePass | View Emergency GatePass</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+    <style>
+      .logout{
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static "css/view_normal_style.css" %}">
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">AnandICE GatePass</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li><a href="#">About</a></li> -->
+            <!-- <li><a href="#">Link</a></li> -->
+            <li><a href="{% url 'log' %}">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  <!-- <div class="logout">
+    <button type="button" onclick="location.href='{% url 'log' %}'">Logout</button> -->
+  <!-- </div> -->
+
+<br><br><br>
+
+
+    <div class="container">
+    					<table id="ttd">
+    						<thead>
+    							<tr class="table100-head">
+    								<th class="column1">Time/Date of Applying</th>
+    								<th class="column2">Date of Going</th>
+    								<th class="column3">Status</th>
+    								<th class="column4">...</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+                  {% for time,date_time,date,status in combined_list %}
+    								<tr>
+    									<td class="column1">{{date_time}}</td>
+    									<td class="column2">{{date}}</td>
+    									<td class="column3"><strong>{{status}}</strong></td>
+    									<td class="column4"><a href="/post_view_emergency/?z={{time}}">more details..</a></td>
+    								</tr>
+                  {% endfor %}
+    						</tbody>
+    					</table>
+    	</div>
+</body>
+</html>

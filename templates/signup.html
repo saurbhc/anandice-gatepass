@@ -1,0 +1,62 @@
+{% load static %}
+{% if msg %}
+<script>
+    alert('{{msg}}')
+</script>
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GatePass | SignUp Page</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static "css/register_style.css" %}">
+</head>
+<body>
+
+<div class="title"><h1>Sign Up Form</h1></div>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right">
+      <div class="formBox">
+        <form action="/postsignup/" method="post">
+        {% csrf_token %}
+        <p>Name:</p>
+        <input type="text" name="name">
+        <p>College ID:</p>
+        <input type="text" name="college_id">
+        <p>Father's Mobile Number:</p>
+        <input type="text" name="mobile_no_father">
+        <p>Mother's Mobile Number:</p>
+        <input type="text" name="mobile_no_mother">
+        <p>Mobile Number (Self):</p>
+        <input type="text" name="mobile_no_self">
+        <p>Room Number:</p>
+        <input type="text" name="room_no">
+        <p>Semester:</p>
+        <input type="text" name="semester">
+        <p>Email :</p>
+        <input type="email" name="email">
+        <p>Password:</p>
+        <input type="password" name="pass">
+        <input type="submit" value="Register">
+        <a href="{% url 'home_login' %}">Already Registered? LOGIN HERE</a>
+    </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
